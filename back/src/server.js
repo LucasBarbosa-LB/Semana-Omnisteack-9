@@ -1,9 +1,16 @@
 const express = require ('express');
+const mongoose= require ('mongoose');
+const routes = require('./router');
 
 const app = express();
 
-app.get('/', (req , res)=> {
-    return res.json();
+mongoose.connect('mongodb+srv://admLucas:kimlucas@cluster0-4fnbw.mongodb.net/week9?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-app.listen(3333);
+app.use(express.json());
+app.use(routes);
+
+
+app.listen(3333); 
